@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id       Int     @id @default(autoincrement()) @map("id_cliente")
+  nome     String  @map("nome")
+  telefone String  @map("telefone")
+  email    String?  @unique @map("email")
+
+  // Relacionamentos
+  veiculos     Veiculo[]
+  agendamentos Agendamento[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("clientes")
+}
+
+model Veiculo {
+  id        Int    @id @default(autoincrement()) @map("id_veiculo")
+  idCliente Int    @map("id_cliente")
+  marca     String @map("marca")
+  modelo    String @map("modelo")
+  placa     String @unique @map("placa")
+  ano       Int    @map("ano")
+
+  // Relacionamentos
+  cliente      Cliente       @relation(fields: [idCliente], references: [id], onDelete: Cascade)
+  agendamentos Agendamento[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("veiculos")
+}
+
+model Servico {
+  id        Int     @id @default(autoincrement()) @map("id_servico")
+  descricao String  @map("descricao")
+  valor     Decimal @map("valor") @db.Decimal(10, 2)
+  ativo     Boolean @default(true) @map("ativo")
+
+  // Relacionamentos
+  agendamentos Agendamento[]
+  agendas      Agenda[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("servicos")
+}
+
+model Agenda {
+  id        Int      @id @default(autoincrement()) @map("id_agenda")
+  idServico Int      @map("id_servico")
+  dia       DateTime @map("dia") @db.Date
+  horario   String   @map("horario")
+  qtdVagas  Int      @map("qtd_vagas")
+
+  // Relacionamentos
+  servico Servico @relation(fields: [idServico], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("agenda")
+}
+
+model Agendamento {
+  id               Int       @id @default(autoincrement()) @map("id_agendamento")
+  descricao        String?   @map("descricao")
+  dataAgendamento  DateTime  @default(now()) @map("data_agendamento")
+  idVeiculo        Int       @map("id_veiculo")
+  idCliente        Int       @map("id_cliente")
+  idServico        Int       @map("id_servico")
+  dataCancelamento DateTime? @map("data_cancelamento")
+  dataServico      DateTime? @map("data_servico")
+
+  // Relacionamentos
+  veiculo Veiculo @relation(fields: [idVeiculo], references: [id], onDelete: Restrict)
+  cliente Cliente @relation(fields: [idCliente], references: [id], onDelete: Restrict)
+  servico Servico @relation(fields: [idServico], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("agendamentos")
+}
