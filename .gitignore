@@ -56,3 +56,13 @@ pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 ~*.*
+README.md
+
+# docker
+Dockerfile
+.dockerignore
+
+#terraform
+terraform
+
+/src/generated/prisma
