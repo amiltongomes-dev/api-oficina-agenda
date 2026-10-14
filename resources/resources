@@ -1,0 +1,11 @@
+npm init -y
+
+instalados
+express
+mysql2
+nodemon
+cors
+
+
+instalando prisma
+npm install prisma@6 @prisma/client@6
