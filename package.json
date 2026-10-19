@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "devmon": "nodemon src/server.js",
+    "start": "node src/server.js",
     "dev": "tsx watch src/server.ts",
-    "start": "nodemon src/server.js",
     "build": "echo \"Build realizada com sucesso\""
   },
   "repository": {

@@ -1,0 +1,45 @@
+npm init -y
+
+instalados
+express
+mysql2
+nodemon
+cors
+
+
+"dev": "tsx watch src/server.ts",
+
+import 'dotenv/config';
+import express from "express";
+import clienteRoutes from "./routes/clienteRouter";
+
+require("dotenv").config()
+const express = require("express")
+const clienteRoutes = require("./routes/clienteRouter")
+ "type": "commonjs",
+
+
+
+
+
+*instalando prisma
+npm install prisma@6 @prisma/client@6
+
+npx prisma init
+
+*crie todo o esquema e depois
+npx prisma generate
+
+npx prisma migrate dev --name init
+
+
+
+*intalar o tsx para rodar tipescript
+npm install -D tsx
+
+*criando docker
+configure o aquivo Dockerfile
+
+docker build -t api-oficina-agenda .
+
+docker run -d -p 4000:4000 --name oficina-agenda-container api-oficina-agenda
