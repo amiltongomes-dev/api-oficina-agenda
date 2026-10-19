@@ -1,0 +1,15 @@
+import express from 'express';
+import clienteRoutes from './routes/clienteRoutes';
+
+const app = express();
+
+app.use(express.json());
+
+// Registra as rotas
+app.use('/api', clienteRoutes);
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
