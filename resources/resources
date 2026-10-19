@@ -7,8 +7,17 @@ nodemon
 cors
 
 
-instalando prisma
+*instalando prisma
 npm install prisma@6 @prisma/client@6
 
 npx prisma init
+
+*crie todo o esquema e depois
 npx prisma generate
+
+npx prisma migrate dev --name init
+
+
+
+*intalar o tsx para rodar tipescript
+npm install -D tsx
