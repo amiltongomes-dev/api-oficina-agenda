@@ -1,12 +1,13 @@
-import express from 'express';
-import clienteRoutes from './routes/clienteRoutes';
+import 'dotenv/config';
+import express from "express";
+import clienteRoutes from "./routes/clienteRouter";
 
 const app = express();
 
 app.use(express.json());
 
 // Registra as rotas
-app.use('/api', clienteRoutes);
+app.use('', clienteRoutes);
 
 const PORT = process.env.PORT || 3000;
 
