@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { prisma } from '../lib/prisma';
+import { prisma } from '../lib/prisma.js';
 
 // 1. Criar Veículo
 export const criarVeiculo = async (req: Request, res: Response) => {

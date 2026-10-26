@@ -5,7 +5,7 @@ import {
   buscarClientePorId,
   atualizarCliente,
   deletarCliente,
-} from '../controllers/clienteController';
+} from '../controllers/clienteController.js';
 
 const router = Router();
 
