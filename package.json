@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devmon": "nodemon src/server.js",
-    "start": "node src/server.js",
-    "dev": "tsx watch src/server.ts",
-    "build": "echo \"Build realizada com sucesso\""
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,8 @@
     "express": "^5.3.0",
     "mysql2": "^3.24.6",
     "nodemon": "^3.1.14",
-    "prisma": "^6.19.3"
+    "prisma": "^6.19.3",
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
     "tsx": "^4.23.15"
