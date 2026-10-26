@@ -4,6 +4,10 @@
 import "dotenv/config";
 import { defineConfig, env } from "prisma/config";
 
+import { PrismaClient } from '@prisma/client';
+
+export const prisma = new PrismaClient();
+
 export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
