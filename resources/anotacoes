@@ -6,6 +6,7 @@ mysql2
 nodemon
 cors
 
+npm install -D @types/express @types/node
 
 "dev": "tsx watch src/server.ts",
 
